@@ -1,4 +1,4 @@
-# Empirical Empirical Study of Human Pose representations for Gait Recognition
+# Empirical Study of Human Pose representations for Gait Recognition
 
 Source code for the **PoseGaitGL** approach presented in the publication for Expert Systems with Applications.
 
