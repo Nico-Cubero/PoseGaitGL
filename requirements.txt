@@ -1,0 +1,8 @@
+PyYAML
+tensorboard
+numpy>=1.26.0
+opencv-python
+tqdm
+kornia
+einops
+pillow

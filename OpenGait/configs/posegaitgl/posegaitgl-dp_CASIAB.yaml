@@ -1,0 +1,72 @@
+# Note  : *** the batch_size should be equal to the gpus number at the test phase!!! ***
+data_cfg:
+  dataset_name: CASIA-B
+  dataset_root: your_path
+  dataset_partition: ./datasets/CASIA-B/CASIA-B.json
+  num_workers: 2
+  remove_no_gallery: false
+  test_dataset_name: CASIA-B
+  sel_channel_idx: [0, 2, 3, 5, 6, 8, 9, 11, 12, 14, 15, 17, 18, 20, 21, 23, 24, 26, 27, 29, 30, 32, 33, 35, 36, 38] # Only channels IV are used
+
+evaluator_cfg:
+  enable_float16: false 
+  restore_ckpt_strict: true
+  restore_hint: 80000
+  save_name: PoseGaitGL
+  sampler:
+    batch_size: 4
+    sample_type: all_ordered
+    type: InferenceSampler
+
+loss_cfg:
+  - loss_term_weight: 1.0
+    margin: 0.2
+    type: TripletLoss
+    log_prefix: triplet
+  - loss_term_weight: 1.0
+    scale: 1
+    type: CrossEntropyLoss
+    log_accuracy: true
+    label_smooth: true # Set by default to 0.1
+    log_prefix: softmax
+
+model_cfg:
+  model: PoseGaitGL
+  channels: [32, 64, 128]
+  class_num: 74
+  repeat_layers:
+    GLConvA1: 2
+  num_in_channels: 26 # full-body (2 * 1) + limbs (2 * 4) + middle-limbs (2 * 8)
+  displayed_channels: [12, 25]
+
+optimizer_cfg:
+  lr: 1.0e-4
+  solver: Adam
+  weight_decay: 5.0e-4
+
+scheduler_cfg:
+  gamma: 0.1
+  milestones:
+    - 70000
+  scheduler: MultiStepLR
+
+trainer_cfg:
+  enable_float16: false
+  with_test: false
+  log_iter: 100
+  restore_ckpt_strict: true
+  restore_hint: 0
+  save_iter: 10000
+  save_name: PoseGaitGL
+  sync_BN: true
+  total_iter: 80000
+  sampler:
+    batch_shuffle: true
+    batch_size:
+      - 8
+      - 8
+    frames_num_fixed: 30
+    frames_skip_num: 0
+    sample_type: fixed_ordered
+    type: TripletSampler
+

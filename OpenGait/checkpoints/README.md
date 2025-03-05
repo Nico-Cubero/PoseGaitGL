@@ -1,0 +1,18 @@
+# Model Zoo
+
+This dir contains checkpoints four our trained models
+
+##  [CASIA-B](http://www.cbsr.ia.ac.cn/english/Gait%20Databases.asp)                                                                                          
+
+|                                                                                          Model                                                                                          |   Pose    | `Rank@1.NM` | `Rank@1.BG` | `Rank@1.CL` | `Mean` |                                            Configuration                                             |                   Checkpoint                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:------------:|:-----------:|:-----------:|:------:|:----------------------------------------------------------------------------------------------------:|:----------------------------------------------:| 
+|                                                                                      PoseGaitGL-HM                                                                                      |  Heatmap  |    93.3     |    81.8     |    71.5     |  82.2  |                [posegaitgl-hm.yaml](../configs/posegaitgl/posegaitgl-hm_CASIAB.yaml)                 |  [PoseGaitGL-HM.pt](CASIAB/PoseGaitGL-hm.pt)   |
+|                                                                                      PoseGaitGL-DP                                                                                      | DensePose |    97.3     |    92.8    |    86.0     |  92.0  |                [posegaitgl-dp.yaml](../configs/posegaitgl/posegaitgl-dp_CASIAB.yaml)                 |  [PoseGaitGL-DP.pt](CASIAB/PoseGaitGL-dp.pt)  |
+
+
+##  [TUM-GAID](https://www.ce.cit.tum.de/mmk/verschiedenes/tum-gaid-database/)                                                                                          
+
+|                                                                                          Model                                                                                          |   Pose    | `N`  | `B`  | `S`  | `TN` | `TB` | `TS` | `Mean` |                              Configuration                              |                   Checkpoint                   |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:----:|:----:|:----:|:----:|:----:|:----:|:-------:|:-----------------------------------------------------------------------:|:----------------------------------------------:| 
+|                                                                                      PoseGaitGL-HM                                                                                      |  Heatmap  | 99.7 | 99.0 | 99.0 | 100  | 100  | 100  |  99.3   | [posegaitgl-hm.yaml](../configs/posegaitgl/posegaitgl-hm_TUM_GAID.yaml) |  [PoseGaitGL-HM.pt](TUM_GAID/PoseGaitGL-hm.pt)   |
+|                                                                                      PoseGaitGL-DP                                                                                      | DensePose | 97.3 | 100  | 99.7 | 100  | 100  | 100  |   99.8 |  [posegaitgl-dp.yaml](../configs/posegaitgl/posegaitgl-dp_TUM_GAID.yaml)  |  [PoseGaitGL-DP.pt](TUM_GAID/PoseGaitGL-dp.pt)  |
